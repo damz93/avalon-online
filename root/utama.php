@@ -145,15 +145,34 @@
 										Pengeluaran
 									</a>
 								</li>
-								<li class="nav-item">
-									<a class="nav-link d-flex align-items-center gap-2" href="laporan/">
+								<!-- <li class="nav-item">
+									<a class="nav-link d-flex align-items-center gap-2" data-bs-toggle="collapse" href="#bagian_laporan" role="button">
 										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-bar-graph" viewBox="0 0 16 16">
 											<path d="M10 13.5a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-6a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v6zm-2.5.5a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1zm-3 0a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-1z"/>
 											<path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
 										</svg>
 										Laporan
 									</a>
-								</li>
+									<div class="collapse" id="bagian_laporan">										
+										<ul class="nav flex-column ms-3">
+											<li class="nav-item"><a class="nav-link d-flex align-items-center gap-2" href="laporan/"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-bar-graph" viewBox="0 0 16 16">
+											<path d="M10 13.5a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-6a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v6zm-2.5.5a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1zm-3 0a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-1z"/>
+											<path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+										</svg>Laporan Summary</a></li>
+												
+										</ul>
+									</div> -->
+									<li class="nav-item">
+										<a class="nav-link d-flex align-items-center gap-2" href="laporan/">
+											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-bar-graph" viewBox="0 0 16 16">
+												<path d="M10 13.5a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-6a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v6zm-2.5.5a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1zm-3 0a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-1z"/>
+												<path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+											</svg>
+											Laporan
+										</a>
+									</li>
+
+								
 							</ul>
 							<hr class="my-3 m-3" style="color:black">
 							<ul class="nav flex-column">
@@ -196,24 +215,36 @@
 					$pem_bul_s = "Rp".number_format($pem_bul, 0, ",", ".");
 				}
 
-				$utang_bulan = mysqli_query($koneksi, "SELECT sum(NOMINAL) as ut_bul FROM tbl_pengeluaran WHERE YEAR(TGL_DIBUAT)='$tahun_cek' and MONTH(TGL_DIBUAT)='$bulan_cek' AND KATEGORI='UTANG'");
+				$utang_bulan = mysqli_query($koneksi, "SELECT sum(NOMINAL) as ut_bul FROM tbl_pengeluaran WHERE YEAR(TGL_DIBUAT)='$tahun_cek' and MONTH(TGL_DIBUAT)='$bulan_cek' AND KATEGORI='PEMBAYARAN UTANG'");
 				while ($dd = mysqli_fetch_array($utang_bulan)) {
 					$ut_bul = $dd['ut_bul'];					
 				}
 
-				$bayar_utang_bulan = mysqli_query($koneksi, "SELECT sum(NOMINAL) as bu_bul FROM tbl_pemasukan WHERE YEAR(TGL_DIBUAT)='$tahun_cek' and MONTH(TGL_DIBUAT)='$bulan_cek' AND KATEGORI='PEMBAYARAN UTANG'");
+				$bayar_utang_bulan = mysqli_query($koneksi, "SELECT sum(NOMINAL) as bu_bul FROM tbl_pemasukan WHERE YEAR(TGL_DIBUAT)='$tahun_cek' and MONTH(TGL_DIBUAT)='$bulan_cek' AND KATEGORI='UTANG'");
 				while ($dd = mysqli_fetch_array($bayar_utang_bulan)) {
 					$bu_bul = $dd['bu_bul'];					
 				}
 
+
 				$total_utang = $ut_bul - $bu_bul;
-				$total_utang_s = "Rp".number_format($total_utang, 0, ",", ".");
+				if ($total_utang < 0){
+					$total_utang = str_replace("-", "", $total_utang);
+				}				
+				else{
+					$total_utang = $total_utang;
+				}
+				
+				$total_utang_tamp = "Rp".number_format($total_utang, 0, ",", ".");
 				
 				$pengeluaran_bulan = mysqli_query($koneksi, "SELECT sum(NOMINAL) as pen_bul FROM tbl_pengeluaran WHERE YEAR(TGL_DIBUAT)='$tahun_cek' and MONTH(TGL_DIBUAT)='$bulan_cek' ");
 				while ($dd = mysqli_fetch_array($pengeluaran_bulan)) {
 					$pen_bul = $dd['pen_bul'];
 					$pen_bul_s = "Rp".number_format($pen_bul, 0, ",", ".");
 				}
+
+
+				
+
 				$keuntungan = $pem_bul - $pen_bul;				
 				$keuntungan_s = "Rp".number_format($keuntungan, 0, ",", ".");
 			?>
@@ -225,7 +256,14 @@
 							<?php echo $tgl_hari_ini; ?>
 						</p>
 					</div>
-					<div class="col-lg-3 mt-3">
+					<div class="col-lg-12 mt-3">
+						<div class="service-box">
+							<div class="service-content">
+								<p style="font-size: 5rem;color: white;" class="text-center">JANGAN LUPA ZAKAT</p>
+							</div>
+						</div>
+					</div>
+					<!-- <div class="col-lg-3 mt-3">
 						<div class="service-box">
 							<div class="service-content">
 								<p style="font-size:12pt;color:#fcfcfc" class="text-center">Profit Bulan Ini<br>(<?php echo $bulan_ini; ?>)
@@ -233,10 +271,8 @@
 							</div>
 							
 							<div class="service-ico">							
-								<p style="font-size: 16pt;color:#ffffff" class="s-description text-center">
-								<!-- <span class="ico-circle"> -->
-									<i class="m-1"><?php echo $keuntungan_s; ?></i></i>
-								<!-- </span -->
+								<p style="font-size: 16pt;color:#ffffff" class="s-description text-center">								
+									<i class="m-1"><?php echo $keuntungan_s; ?></i></i>								
 							</div>
 						</div>
 					</div>
@@ -249,9 +285,9 @@
 							
 							<div class="service-ico">							
 								<p style="font-size: 16pt;color:#ffffff" class="s-description text-center">
-								<!-- <span class="ico-circle"> -->
-									<i class="m-1"><?php echo $total_utang_s; ?></i></i>
-								<!-- </span -->
+								
+									<i class="m-1"><?php echo $total_utang_tamp; ?></i></i>
+								
 							</div>
 						</div>
 					</div>
@@ -264,9 +300,9 @@
 							
 							<div class="service-ico">							
 								<p style="font-size: 16pt;color:#ffffff" class="s-description text-center">
-								<!-- <span class="ico-circle"> -->
+								
 								<i class="m-1"><?php echo $pem_bul_s; ?></i></i>
-								<!-- </span -->
+								
 							</div>
 						</div>
 					</div>
@@ -279,12 +315,12 @@
 							
 							<div class="service-ico">							
 								<p style="font-size: 16pt;color:#ffffff" class="s-description text-center">
-								<!-- <span class="ico-circle"> -->
+								
 								<i class="m-1"><?php echo $pen_bul_s; ?></i></i>
-								<!-- </span -->
+								
 							</div>
 						</div>
-					</div>
+					</div> -->
 					
 				</div>
 		

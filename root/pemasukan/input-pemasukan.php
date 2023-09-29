@@ -205,7 +205,7 @@
 											<select class="form-control" onchange="pindah()" id="kategori_pemasukan" name="kategori_pemasukan" autofocus>
 												<option value="0">Pilih Kategori Pemasukan</option>
 												<option value="AVALON">Avalon</option>
-												<option value="PEMBAYARAN UTANG">Pembayaran Utang</option>
+												<option value="UTANG">Utang</option>
 											</select>
 										</div>
 										<div class="form-floating mb-3">

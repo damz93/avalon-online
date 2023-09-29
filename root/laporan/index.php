@@ -193,7 +193,7 @@
 			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-5">
 				<div class="row">
 					<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-						<h3 style="color:#373435">Laporan Summary - Avalon</h3>
+						<h3 style="color:#373435">Laporan - Avalon</h3>
 					</div>
 
 
@@ -202,8 +202,20 @@
                             <div class="card" style="background-color: white;border-color: black;">
                                 <div class="card-body p-0 m-2">
                                     <div class="table-wrapper table-responsive">
-                                        <form class="m-4" autocomplete="off" action="cetak-summary" target="_BLANK" onsubmit="return cek_dulu();" method="POST" enctype="multipart/form-data">								
-                                             <div class="row mb-3">
+                                        <form class="m-4" autocomplete="off" action="cetak-laporan" target="_BLANK" onsubmit="return cek_dulu();" method="POST" enctype="multipart/form-data">		
+												<div class="row mb-4">
+                                                    <div class="col-md-2">                                                
+                                                    	<p style="color: black;">Pilih Laporan</p>
+                                                    </div>
+                                                    <div class='col'>
+														<select class="form-control" onchange="pindah()" id="kategori_laporan" name="kategori_laporan" autofocus>
+															<option value="0">Pilih Laporan</option>
+															<option value="SUMMARY">Laporan Summary</option>
+															<option value="UTANG">Laporan Utang</option>
+														</select>
+                                                    </div>
+                                                </div>						
+                                             	<div class="row mb-4">
                                                     <div class="col-md-2"> 
                                                         <p style="color: black;">Tanggal Awal:</p>
                                                     </div>
@@ -211,7 +223,7 @@
                                                         <input autofocus type="date" style="background-color: white;color:#373435" class="form-control" value="" name="tgl_awal" id="tgl_awal">
                                                     </div>
                                                 </div>
-                                                <div class="row mb-3">
+                                                <div class="row mb-4">
                                                     <div class="col-md-2">                                                
                                                     <p style="color: black;">Tanggal Akhir:</p>
                                                     </div>
@@ -219,6 +231,7 @@
                                                         <input type="date" style="background-color: white;color:#373435" class="form-control" value="" name="tgl_akhir" id="tgl_akhir">
                                                     </div>
                                                 </div>
+                                               
                                             
                                                 <div class="d-grid gap-2">
                                                     <input type="submit" name="tampil" value="Tampil" class="btn btn-success">
@@ -235,19 +248,31 @@
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script>
 		<script src="../../assets/dist/js/dashboard.js"></script>
 		<script>
+			
+			function pindah(){
+				var ob_tgl_awal = document.getElementById("tgl_awal");
+				ob_tgl_awal.focus();	
+			}
 			function cek_dulu(){
 				
 				
+				var s_kategori_laporan = document.getElementById("kategori_laporan").value;
 				var s_tgl_awal = document.getElementById("tgl_awal").value;
 				var s_tgl_akhir = document.getElementById("tgl_akhir").value;
                 var tanggal1 = new Date(s_tgl_awal);
                 var tanggal2 = new Date(s_tgl_akhir);
 
 				
+				var ob_kategori_laporan = document.getElementById("kategori_laporan");
 				var ob_tgl_awal = document.getElementById("tgl_awal");
 				var ob_tgl_akhir = document.getElementById("tgl_akhir");
 				
-				if (s_tgl_awal==''){
+				if(s_kategori_laporan=='0'){
+					alert('Pilih Kategori Laporan yang akan ditampilkan');
+					ob_kategori_laporan.focus();
+					return false;
+				}
+				else if (s_tgl_awal==''){
 					alert('Isi tanggal awal terlebih dahulu');
 					ob_tgl_awal.focus();
 					return false;

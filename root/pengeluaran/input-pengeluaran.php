@@ -208,7 +208,7 @@
 												<option value="PEMBELIAN PROPERTO DAN PERALATAN">Pembelian Properti dan Peralatan</option>
 												<option value="RENOVASI">Renovasi</option>
 												<option value="SHARE PROFIT">Share Profit</option>
-												<option value="UTANG">Utang</option>
+												<option value="PEMBAYARAN UTANG">Pembayaran Utang</option>
 											</select>
 										</div>
 									

@@ -5,7 +5,7 @@
 	 $bulan_ini = date('M-y');
 	?>
 <!doctype html>
-<html lang="en" data-bs-theme="auto">
+<html>
 	<head>
 		<script src="../../assets/dist/js/color-modes.js"></script>
 		<meta charset="utf-8">
@@ -199,7 +199,7 @@
 					<div class="table-wrapper table-responsive">
 						<div class="card p-3" style="background-color: white;border-color: black;">
 							<div class="card-body">
-								<table id="tabel1" class="table table-hover border"  cellpadding="0" cellspacing="1">
+								<table id="tabel1" class="table table-hover border" cellpadding="0" cellspacing="1">
 									<thead class="center">
 										<tr class="text-center table-primary">
 											<!-- <th>No.</th>			    -->
@@ -242,11 +242,12 @@
 										<td class="text-end"><?php echo "Rp".$nominal; ?></td>
 										<td class="text-center">
 											<a target="_BLANK" href='cetak-pengeluaran?id=<?php echo $id; ?>' title="Cetak Nota Pengeluaran" onclick="return confirm('Pilih OK untuk mencetak...')">
-												<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
-													<path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
-													<path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
-												</svg>
-											</a>
+											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+											<path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+											<path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+											</svg>
+											</a> |
+											<a href='hapus-pengeluaran.php?id=<?php echo $d['ID']; ?>' title="Hapus Pengeluaran" onclick="return confirm('Yakin Ingin Hapus?')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></a>
 										</td>
 										<!-- <td>			
 											<a href='edit-diskon.php?kode_diskon=<?php echo $d['KODE_DISKON']; ?>' title="Edit Diskon">
